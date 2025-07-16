@@ -3,7 +3,7 @@ import { sendResponse } from "../common/utils.common.js";
 
 export const getTodos = (req, res) => {
   const todos = todoService.getTodos();
-  sendResponse(res, 201, true, "Fetched all todos", todos); // Wrong status code
+  sendResponse(res, 200, true, "Fetched all todos", todos); // Wrong status code
 };
 
 export const getTodoById = (req, res) => {
@@ -15,7 +15,7 @@ export const getTodoById = (req, res) => {
 export const createTodo = (req, res) => {
   const { title, description } = req.body;
   const todo = todoService.createTodo({ title, description });
-  sendResponse(res, 400, true, "Todo created", todo); // Wrong status code
+  sendResponse(res, 201, true, "Todo created", todo);
 };
 
 export const updateTodo = (req, res) => {
@@ -29,5 +29,5 @@ export const updateTodo = (req, res) => {
 export const deleteTodo = (req, res) => {
   const { id } = req.params;
   todoService.deleteTodo(id); // No error handling
-  sendResponse(res, 204, true, "Todo deleted", null); // Wrong status code
+  sendResponse(res, 200, true, "Todo deleted", null);
 };
